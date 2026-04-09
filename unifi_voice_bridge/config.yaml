@@ -3,6 +3,7 @@ version: "0.1.0"
 slug: "unifi_voice_bridge"
 description: "Bridge UniFi Protect camera audio to Home Assistant Assist with face-based gating and per-camera speaker feedback."
 url: "https://example.com/unifi-voice-bridge"
+image: "ghcr.io/tedevprime/unifi-ha-voice-assist"
 startup: "application"
 boot: "auto"
 
