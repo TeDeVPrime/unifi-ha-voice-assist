@@ -1,0 +1,31 @@
+configuration:
+  protect_host:
+    name: Protect host
+  protect_port:
+    name: Protect port
+  protect_allow_insecure_tls:
+    name: Allow insecure TLS
+  protect_username:
+    name: Protect username
+  protect_password:
+    name: Protect password
+  webhook_bind_host:
+    name: Webhook bind host
+  webhook_bind_port:
+    name: Webhook bind port
+  webhook_shared_secret:
+    name: Webhook shared secret
+  log_level:
+    name: Log level
+  keep_log_days:
+    name: Keep log days
+  config_file:
+    name: Camera profiles file
+  logs_dir:
+    name: Logs directory
+  clips_dir:
+    name: Audio clips directory
+  test_mode_enabled:
+    name: Test mode enabled
+  test_mode_record_seconds:
+    name: Test mode record seconds

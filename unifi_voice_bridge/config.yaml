@@ -1,0 +1,119 @@
+name: "UniFi Voice Bridge"
+version: "0.1.0"
+slug: "unifi_voice_bridge"
+description: "Bridge UniFi Protect camera audio to Home Assistant Assist with face-based gating and per-camera speaker feedback."
+url: "https://example.com/unifi-voice-bridge"
+startup: "application"
+boot: "auto"
+
+arch:
+  - amd64
+  - aarch64
+
+init: false
+homeassistant_api: true
+ingress: false
+panel_icon: "mdi:microphone-message"
+
+ports:
+  8099/tcp: 8099
+ports_description:
+  8099/tcp: "Webhook listener and diagnostics"
+
+map:
+  - type: addon_config
+    read_only: false
+
+options:
+  protect_host: "192.168.1.10"
+  protect_port: 443
+  protect_allow_insecure_tls: false
+  protect_username: ""
+  protect_password: ""
+
+  webhook_bind_host: "0.0.0.0"
+  webhook_bind_port: 8099
+  webhook_shared_secret: ""
+
+  log_level: "info"
+  keep_log_days: 14
+
+  default_language: "en"
+  default_agent_id: "home_assistant"
+  config_file: "/config/camera_profiles.yaml"
+  logs_dir: "/config/logs"
+  clips_dir: "/config/audio_clips"
+  save_audio_debug_default: false
+
+  rtsp_transport: "tcp"
+  rtsp_prefer_secure: false
+
+  session_open_seconds: 10
+  session_extend_seconds: 3
+  person_hold_seconds: 2
+  cooldown_seconds: 20
+
+  test_mode_enabled: true
+  test_mode_record_seconds: 5
+
+  wakeword_enabled: false
+  wakeword_model: "/config/models/hey_unifi.tflite"
+  wakeword_score_threshold_pct: 55
+
+  stt_engine: "external"
+  stt_model: "small"
+  stt_device: "auto"
+  stt_compute_type: "default"
+
+  vad_enabled: true
+  command_max_ms: 6000
+  silence_timeout_ms: 1000
+  minimum_command_ms: 350
+  silence_rms_threshold: 450
+
+schema:
+  protect_host: str
+  protect_port: port
+  protect_allow_insecure_tls: bool
+  protect_username: str
+  protect_password: password
+
+  webhook_bind_host: str
+  webhook_bind_port: port
+  webhook_shared_secret: str
+
+  log_level: "list(trace|debug|info|warning|error)"
+  keep_log_days: "int(1,365)"
+
+  default_language: str
+  default_agent_id: "str?"
+  config_file: str
+  logs_dir: str
+  clips_dir: str
+  save_audio_debug_default: bool
+
+  rtsp_transport: "list(tcp|udp)"
+  rtsp_prefer_secure: bool
+
+  session_open_seconds: "int(3,60)"
+  session_extend_seconds: "int(1,15)"
+  person_hold_seconds: "int(1,10)"
+  cooldown_seconds: "int(0,300)"
+
+  test_mode_enabled: bool
+  test_mode_record_seconds: "int(1,30)"
+
+  wakeword_enabled: bool
+  wakeword_model: str
+  wakeword_score_threshold_pct: "int(1,100)"
+
+  stt_engine: "list(faster_whisper|whisper|external)"
+  stt_model: str
+  stt_device: str
+  stt_compute_type: str
+
+  vad_enabled: bool
+  command_max_ms: "int(500,15000)"
+  silence_timeout_ms: "int(100,5000)"
+  minimum_command_ms: "int(100,5000)"
+  silence_rms_threshold: "int(1,5000)"
